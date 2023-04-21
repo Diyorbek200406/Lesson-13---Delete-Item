@@ -1,17 +1,18 @@
 import "./App.css";
 import { useState } from "react";
+import Title from "./components/Title";
+import EvenList from "./components/EvenList";
+import Modal from "./components/Modal";
 
 function App() {
-  const [name, setname] = useState("Diyorbek");
+  const [showModal, setShowModal] = useState(false);
+  const [showContent, setShowContent] = useState(true);
   const [events, setEvents] = useState([
     { title: "Diyorbek's birthday party", id: 1 },
     { title: "Davlatbek's live stream", id: 2 },
     { title: "Match: Manchester United vs Barcelona", id: 3 },
   ]);
 
-  const handleClick = () => {
-    setname("Davlatbek");
-  };
   // delete item
   const handleDelete = (id) => {
     const filteredEvents = events.filter((event) => {
@@ -19,25 +20,63 @@ function App() {
     });
     setEvents(filteredEvents);
   };
-
+  // hide modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  let title = "Diyorbek Erkinov Dev 💻 ";
+  let subtitle = "All events well be here 💻";
   return (
     <div className="App">
-      <h1>My Name Is {name}</h1>
-      <button onClick={handleClick}>Change name</button>
-      {events.map((event) => {
-        return (
-          <div key={event.id}>
-            <h2>{event.title}</h2>
-            <button
-              onClick={() => {
-                handleDelete(event.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      })}
+      <Title title={title} subtitle={subtitle} />
+      <br />
+      {showContent && (
+        <button
+          onClick={() => {
+            setShowContent(false);
+          }}
+        >
+          Hide Content
+        </button>
+      )}
+      {!showContent && (
+        <button
+          onClick={() => {
+            setShowContent(true);
+          }}
+        >
+          Show Content{" "}
+        </button>
+      )}
+      {showContent && <EvenList events={events} handleDelete={handleDelete} />}
+      {/* <Modal>
+        <h2>Diyorbek Erkinov Youtube channel</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
+        </p>
+      </Modal> */}
+      {showModal && (
+        <Modal closeModal={closeModal}>
+          <h1>Diyorbek Erkinov Youtube channel</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+            excepturi, debitis corporis et repellat quae libero aspernatur
+            animi, quos a autem! Eveniet nihil velit architecto odio odit autem!
+            Est distinctio illum rerum, culpa necessitatibus debitis fugit
+            cupiditate excepturi corporis. sallm hammaga salom salom
+          </p>
+          <a href="#">Subscribe</a>
+        </Modal>
+      )}
+      <br />
+      <br />
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        showModal
+      </button>
     </div>
   );
 }
