@@ -3,10 +3,17 @@ import React from "react";
 import "./modal.css";
 import ReactDOM from "react-dom";
 
-const Modal = ({ children, closeModal }) => {
+const Modal = ({ children, closeModal, isModeModal }) => {
   return ReactDOM.createPortal(
     <div className="modal-backdrop">
-      <div className="modal">
+      <div
+        className="modal"
+        style={{
+          border: "4px solid",
+          borderColor: isModeModal ? "yellowgreen" : "red",
+          textAlign: "center",
+        }}
+      >
         {children}
         <br />
         <button onClick={closeModal}>Close</button>
