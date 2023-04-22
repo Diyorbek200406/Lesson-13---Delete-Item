@@ -16,7 +16,12 @@ const Modal = ({ children, closeModal, isModeModal }) => {
       >
         {children}
         <br />
-        <button onClick={closeModal}>Close</button>
+        <button
+          className={isModeModal ? "modal-btn" : "modal-btn-dark"}
+          onClick={closeModal}
+        >
+          Close
+        </button>
       </div>
     </div>,
     document.body

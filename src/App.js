@@ -56,7 +56,7 @@ function App() {
         </p>
       </Modal> */}
       {showModal && (
-        <Modal closeModal={closeModal} isModeModal={true}>
+        <Modal closeModal={closeModal} isModeModal={false}>
           <h2>Diyorbek Erkinov Youtube channel</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
