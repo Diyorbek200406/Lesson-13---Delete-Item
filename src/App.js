@@ -57,7 +57,7 @@ function App() {
       </Modal> */}
       {showModal && (
         <Modal closeModal={closeModal}>
-          <h1>Diyorbek Erkinov Youtube channel</h1>
+          <h2>Diyorbek Erkinov Youtube channel</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
             excepturi, debitis corporis et repellat quae libero aspernatur
@@ -82,4 +82,3 @@ function App() {
 }
 
 export default App;
- 
