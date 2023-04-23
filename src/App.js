@@ -8,12 +8,13 @@ import NewEventForm from "./components/newEventForm";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showContent, setShowContent] = useState(true);
-  const [events, setEvents] = useState([
-    { title: "Diyorbek's birthday party", id: 1 },
-    { title: "Davlatbek's live stream", id: 2 },
-    { title: "Match: Manchester United vs Barcelona", id: 3 },
-  ]);
-
+  const [events, setEvents] = useState([]);
+  const newEvent = (event) => {
+    setEvents((prev) => {
+      return [...prev, event];
+    });
+    setShowModal(false);
+  };
   // delete item
   const handleDelete = (id) => {
     const filteredEvents = events.filter((event) => {
@@ -21,10 +22,7 @@ function App() {
     });
     setEvents(filteredEvents);
   };
-  // hide modal
-  const closeModal = () => {
-    setShowModal(false);
-  };
+
   let title = "Diyorbek Erkinov Dev 💻 ";
   let subtitle = "All events well be here 💻";
   return (
@@ -50,15 +48,10 @@ function App() {
         </button>
       )}
       {showContent && <EvenList events={events} handleDelete={handleDelete} />}
-      {/* <Modal>
-        <h2>Diyorbek Erkinov Youtube channel</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
-        </p>
-      </Modal> */}
+
       {showModal && (
-        <Modal closeModal={closeModal} isModeModal={false}>
-          <NewEventForm />
+        <Modal>
+          <NewEventForm newEvent={newEvent} />
         </Modal>
       )}
       <br />

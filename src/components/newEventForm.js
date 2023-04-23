@@ -2,7 +2,7 @@
 import "./NewEventForm.css";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-const NewEventForm = () => {
+const NewEventForm = ({ newEvent }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const resetInputs = () => {
@@ -16,7 +16,7 @@ const NewEventForm = () => {
       date: date,
       id: uuidv4(),
     };
-    console.log(event);
+    newEvent(event);
     resetInputs();
   };
   return (
