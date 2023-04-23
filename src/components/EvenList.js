@@ -1,11 +1,13 @@
-import { Fragment } from "react";
+import style from "./EventList.module.css";
+
 const EvenList = ({ events, handleDelete }) => {
   return (
     <div>
-      {events.length === 0 && <h2>Not Content Yet :)</h2>}
+      {events.length === 0 && <h3>Not Content Yet :)</h3>}
+
       {events.map((event) => {
         return (
-          <Fragment key={event.id}>
+          <div className={style["card"]} key={event.id}>
             <h2>{event.title}</h2>
             <button
               onClick={() => {
@@ -14,7 +16,7 @@ const EvenList = ({ events, handleDelete }) => {
             >
               Delete
             </button>
-          </Fragment>
+          </div>
         );
       })}
     </div>
