@@ -3,6 +3,7 @@ import { useState } from "react";
 import Title from "./components/Title";
 import EvenList from "./components/EvenList";
 import Modal from "./components/Modal";
+import NewEventForm from "./components/newEventForm";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -57,15 +58,7 @@ function App() {
       </Modal> */}
       {showModal && (
         <Modal closeModal={closeModal} isModeModal={false}>
-          <h2>Diyorbek Erkinov Youtube channel</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-            excepturi, debitis corporis et repellat quae libero aspernatur
-            animi, quos a autem! Eveniet nihil velit architecto odio odit autem!
-            Est distinctio illum rerum, culpa necessitatibus debitis fugit
-            cupiditate excepturi corporis. sallm hammaga salom salom
-          </p>
-          <a href="#">Subscribe</a>
+          <NewEventForm />
         </Modal>
       )}
       <br />
@@ -75,7 +68,7 @@ function App() {
           setShowModal(true);
         }}
       >
-        showModal
+        New Event
       </button>
     </div>
   );
