@@ -6,7 +6,12 @@ const NewEventForm = () => {
     <form className="new-event-form">
       <label>
         <span>Event Title :</span>
-        <input type="text" />
+        <input
+          type="text"
+          onChange={() => {
+            console.log("Hello World");
+          }}
+        />
       </label>
       <label>
         <span>Event Date :</span>
